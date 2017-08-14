@@ -1,0 +1,11 @@
+{
+  "name": "wepay-react-checkout",
+  "version": "1.0.0",
+  "description": "React based checkout form using WePay for credit card processing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Giovanni Briggs",
+  "license": "ISC"
+}
