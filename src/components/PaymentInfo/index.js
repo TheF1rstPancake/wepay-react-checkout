@@ -65,10 +65,18 @@ PaymentInfo.defaultProps = {
     postal_code: undefined,
     state:undefined
   },
-  card_number: { card_number: '' },
-  cvc: { cvv: '' },
-  expiration: { expiration: '' },
+  card_number: { value: '' },
+  cvc: { value: '' },
+  expiration: { value: '' },
   ...PaymentInfo.defaultProps
 };
+
+// attach the subobjects to the PaymentInfo object.
+// this will allow people to do imports like
+// import {Address} from 'wepay-react-checkout.PaymentInfo`
+PaymentInfo.CardNumber = CardNumber;
+PaymentInfo.Expiration = Expiration;
+PaymentInfo.CVC = CVC;
+PaymentInfo.Address = Address;
 
 export default PaymentInfo;

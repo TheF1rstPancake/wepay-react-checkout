@@ -9,14 +9,8 @@ import Base from '../../Base';
 import PropTypes from 'prop-types';
 
 class Address extends Base {
-  constructor(props) {
-    super(props);
-
-    console.log("ADDRESS PROPS: ", props);
-  }
   render() {
-    const country = this.props.country.country;
-    console.log("ADDRESS COUNTRY: ", country);
+    const country = this.props.country.value;
     return (
       <div>
         {
@@ -34,6 +28,7 @@ class Address extends Base {
                 <Col lg={6}>
                   <City
                     onChange={this.handleChange}
+                    country={country}
                     {...this.props.city} />
                 </Col>
                 <Col lg={6}>
@@ -74,11 +69,17 @@ Address.propTypes = {
 
 Address.defaultProps = {
   componentName: 'address',
-  country: { country: 'US' },
-  billing_address: { billing_address: '' },
-  postal_code: { postal_code: '' },
-  state: { state: '' },
+  country: { value: 'US' },
+  billing_address: { value: '' },
+  postal_code: { value: '' },
+  state: { value: '' },
   ...Address.defaultProps
 };
+
+Address.BillingAddress = BillingAddress;
+Address.Country = Country;
+Address.PostalCode = PostalCode;
+Address.City = City;
+Address.State = State;
 
 export default Address;

@@ -3,7 +3,7 @@ import { FormGroup, InputGroup, FormControl, Glyphicon } from 'react-bootstrap';
 import Payment from 'payment';
 import ReactDOM from 'react-dom';
 import Base from '../../Base';
-
+import PropTypes from 'prop-types';
 class CardNumber extends Base {
   constructor(props) {
     super(props);
@@ -18,15 +18,15 @@ class CardNumber extends Base {
   }
 
   handleChange(e) {
-    super.handleChange('card_number', e.target.value);
+    super.handleChange('value', e.target.value);
 
   }
   validate() {
-    if (this.props.card_number === '' || !this.props.card_number) {
+    if (this.props.value === '' || !this.props.value) {
       return null;
     }
 
-    return Payment.fns.validateCardNumber(this.props.card_number) ? 'success' : 'error';
+    return Payment.fns.validateCardNumber(this.props.value) ? 'success' : 'error';
   }
 
 
@@ -44,18 +44,23 @@ class CardNumber extends Base {
             type="tel"
             ref="cardnumber"
             placeholder="**** **** **** ****"
-            value={this.props.card_number}
+            value={this.props.value}
             onChange={this.handleChange}
+            required="true"
           />
         </InputGroup>
       </FormGroup>
     );
   }
 }
+CardNumber.defaultProps = {
+  value:PropTypes.string,
+  ...CardNumber.defaultProps
+};
 
 CardNumber.defaultProps = {
   componentName: 'card_number',
-  card_number: '',
+  value: '',
   ...CardNumber.defaultProps
 };
 

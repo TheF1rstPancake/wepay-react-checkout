@@ -12,7 +12,7 @@ class State extends Base {
   }
 
   handleChange(e) {
-    super.handleChange('state', e.target.value);
+    super.handleChange('value', e.target.value);
   }
 
   renderStates(country) {
@@ -28,7 +28,7 @@ class State extends Base {
   }
 
   componentDidMount() {
-    super.handleChange('state', this.props.state);
+    super.handleChange('value', this.props.value);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -44,15 +44,22 @@ class State extends Base {
   }
 
   render() {
+    const label = this.props.country === 'CA'
+      ? 'Province' : this.props.country === 'US' ? 'State' : 'Region';
+
     return (<FormGroup>
       <ControlLabel>
-        {this.props.country === 'CA' ? 'Province' : this.props.country === 'US' ? 'State' : 'Region'}
+        {label}
       </ControlLabel>
       <FormControl
         id="billing_state"
         name="billing_state"
-        componentClass={this.props.country === 'US' || this.props.country === 'CA' ? 'select' : "input"}
-        value={this.props.state}
+        componentClass={
+          this.props.country === 'US' || this.props.country === 'CA'
+            ? 'select' : "input"
+        }
+        placeholder={label}
+        value={this.props.value}
         onChange={this.handleChange}>
         {
           this.props.country === 'CA' || this.props.country === 'US'
@@ -143,12 +150,17 @@ State.US_STATES = [
 ];
 
 
-State.propTypes.country = PropTypes.string;
+State.propTypes = {
+  country: PropTypes.string,
+  value: PropTypes.string,
+  ...State.propTypes
+};
+
 
 State.defaultProps = {
   country: 'US',
   componentName: 'state',
-  state: State.US_STATES[0],
+  value: State.US_STATES[0],
   ...State.defaultProps
 };
 

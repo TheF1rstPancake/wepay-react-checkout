@@ -10,7 +10,7 @@ class BillingAddress extends Base {
     this.handleChange = this.handleChange.bind(this);
   }
   handleChange(e) {
-    super.handleChange('billing_address', e.target.value);
+    super.handleChange('value', e.target.value);
   }
 
   render() {
@@ -23,7 +23,7 @@ class BillingAddress extends Base {
         name="billing_address"
         type="text"
         placeholder="Street Address"
-        value={this.props.billing_address}
+        value={this.props.value}
         onChange={this.handleChange}
       />
     </FormGroup>);
@@ -32,12 +32,13 @@ class BillingAddress extends Base {
 
 BillingAddress.propTypes = {
   country: PropTypes.string,
+  value:PropTypes.string,
   ...BillingAddress.propTypes
 };
 
 BillingAddress.defaultProps = {
   componentName: 'billing_address',
-  billing_address: '',
+  value: '',
   ...BillingAddress.defaultProps
 };
 

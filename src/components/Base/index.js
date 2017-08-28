@@ -15,7 +15,7 @@ class Base extends Component {
     this.pass_up[[name]] = value;
     var s = this.pass_up;
     //var s =  { [name]: value };
-    console.log("BASE: ", name, value);
+    console.log("Passing up: ", this.props.componentName, s);
     this.props.onChange(this.props.componentName, s);
   }
 }

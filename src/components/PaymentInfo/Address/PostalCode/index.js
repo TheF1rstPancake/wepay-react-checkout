@@ -10,18 +10,18 @@ class PostalCode extends Base {
     this.handleChange = this.handleChange.bind(this);
   }
   handleChange(e) {
-    super.handleChange('postal_code', e.target.value.toUpperCase());
+    super.handleChange('value', e.target.value.toUpperCase());
   }
 
   validate() {
-    if (this.props.postal_code === '' || !this.props.postal_code) {
+    if (this.props.value === '' || !this.props.value) {
       return null;
     }
 
     if (this.props.country === 'US') {
-      return this.validateUS(this.props.postal_code) ? 'success' : 'error';
+      return this.validateUS(this.props.value) ? 'success' : 'error';
     } else if (this.props.country === 'CA') {
-      return this.validateCA(this.props.postal_code) ? 'success' : 'error';
+      return this.validateCA(this.props.value) ? 'success' : 'error';
     } else {
       // we don't have validation for every country
       return null;
@@ -56,8 +56,9 @@ class PostalCode extends Base {
           name="postalcode"
           type="tel"
           placeholder={this.props.country === 'US' ? 'Zip Code' : 'Postal Code'}
-          value={this.props.postal_code}
-          onChange={this.handleChange} />
+          value={this.props.value}
+          onChange={this.handleChange}
+          required="true" />
       </FormGroup>
     );
   }
@@ -66,13 +67,13 @@ class PostalCode extends Base {
 // extend existing propTypes
 PostalCode.propTypes = {
   country: PropTypes.string,
-  postal_code: PropTypes.string,
+  value: PropTypes.string,
   ...PostalCode.propTypes
 };
 
 PostalCode.defaultProps = {
   country: 'US',
-  postal_code: '',
+  value: '',
   componentName: 'postal_code',
   ...PostalCode.defaultProps
 };

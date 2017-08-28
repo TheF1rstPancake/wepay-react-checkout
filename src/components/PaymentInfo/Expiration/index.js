@@ -3,6 +3,8 @@ import Payment from 'payment';
 import { FormGroup, InputGroup, FormControl, Glyphicon } from 'react-bootstrap';
 import ReactDOM from 'react-dom';
 import Base from '../../Base';
+import PropTypes from 'prop-types';
+
 class Expiration extends Base {
   constructor(props) {
     super(props);
@@ -16,15 +18,15 @@ class Expiration extends Base {
   }
 
   handleChange(e) {
-    super.handleChange('expiration', e.target.value);
+    super.handleChange('value', e.target.value);
   }
 
   validate() {
-    if (this.props.expiration === '' || !this.props.expiration) {
+    if (this.props.value === '' || !this.props.value) {
       return null;
     }
 
-    return Payment.fns.validateCardExpiry(this.props.expiration) ? 'success' : 'error';
+    return Payment.fns.validateCardExpiry(this.props.value) ? 'success' : 'error';
   }
 
   render(){
@@ -39,7 +41,7 @@ class Expiration extends Base {
           name="expirdate"
           type="tel"
           placeholder="MM / YY"
-          value={this.props.expiration}
+          value={this.props.value}
           onChange={this.handleChange}
         />
       </InputGroup>
@@ -47,9 +49,14 @@ class Expiration extends Base {
   }
 }
 
+Expiration.propTypes = {
+  value: PropTypes.string,
+  ...Expiration.propTypes
+};
+
 Expiration.defaultProps = {
   componentName: 'expiration',
-  expiration: '',
+  value: '',
   ...Expiration.defaultProps
 };
 

@@ -3,6 +3,7 @@ import Payment from 'payment';
 import { FormGroup, InputGroup, FormControl, Glyphicon } from 'react-bootstrap';
 import ReactDOM from 'react-dom';
 import Base from '../../Base';
+import PropTypes from 'prop-types';
 
 class CVC extends Base {
   constructor(props) {
@@ -17,11 +18,11 @@ class CVC extends Base {
   }
 
   handleChange(e) {
-    super.handleChange('cvc', e.target.value);
+    super.handleChange('value', e.target.value);
   }
 
   validate() {
-    return this.props.cvc === '' || !this.props.cvc ? null :  Payment.fns.validateCardCVC(this.props.cvc) ? 'success' : 'error';
+    return this.props.value === '' || !this.props.value ? null :  Payment.fns.validateCardCVC(this.props.value) ? 'success' : 'error';
   }
 
   render(){
@@ -36,7 +37,7 @@ class CVC extends Base {
           name="cardcvc"
           type="tel"
           placeholder="***"
-          value={this.props.cvv}
+          value={this.props.value}
           onChange={this.handleChange}
         />
       </InputGroup>
@@ -44,9 +45,11 @@ class CVC extends Base {
   }
 }
 
+CVC.propTypes.value = PropTypes.string;
+
 CVC.defaultProps = {
   componentName: 'cvc',
-  cvc: '',
+  value: '',
   ...CVC.defaultProps
 };
 

@@ -14,10 +14,10 @@ class Email extends Base {
   }
   handleChange(e) {
     var text = e.target.value;
-    super.handleChange('email', text);
+    super.handleChange('value', text);
   }
   validate() {
-    var email = this.props.email;
+    var email = this.props.value;
     var pattern = new RegExp( '.+@.+\.[^\s]+');
 
     return email === '' || !email ? null : pattern.test(email) ? 'success' : 'error';
@@ -36,7 +36,7 @@ class Email extends Base {
             name="email"
             type="email"
             placeholder="Email"
-            value={this.props.email}
+            value={this.props.value}
             onChange={this.handleChange}
           />
         </InputGroup>
@@ -46,10 +46,14 @@ class Email extends Base {
 }
 
 Email.propTypes = {
-  componentName: PropTypes.string.isRequired
+  componentName: PropTypes.string.isRequired,
+  value: PropTypes.string,
+  ...Email.propTypes
 };
 
 Email.defaultProps = {
-  componentName: 'email'
+  componentName: 'email',
+  value:'',
+  ...Email.defaultProps
 };
 export default Email;

@@ -9,7 +9,10 @@ class Country extends Base {
     this.handleChange = this.handleChange.bind(this);
   }
   handleChange(e) {
-    super.handleChange('country', e.target.value);
+    super.handleChange('value', e.target.value);
+  }
+  componentDidMount(){
+    super.handleChange('value', this.props.value);
   }
 
   render() {
@@ -22,7 +25,8 @@ class Country extends Base {
           name="billing_country"
           style={{ textTransform: "capitalize" }}
           onChange={this.handleChange}
-          value={this.props.country}
+          value={this.props.value}
+          required="true"
         >
           <option value="US">united states</option>
           <option value="CA">canada</option>
@@ -276,13 +280,13 @@ class Country extends Base {
 }
 
 Country.propTypes ={
-  country: PropTypes.string,
+  value: PropTypes.string,
   ...Country.propTypess
 };
 
 Country.defaultProps = {
   componentName: 'country',
-  country: 'US',
+  value: 'US',
   ...Country.defaultProps
 };
 

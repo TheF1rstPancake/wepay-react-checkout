@@ -9,7 +9,7 @@ class City extends Base {
     this.handleChange = this.handleChange.bind(this);
   }
   handleChange(e) {
-    super.handleChange('city', e.target.value);
+    super.handleChange('value', e.target.value);
   }
 
   render() {
@@ -20,7 +20,7 @@ class City extends Base {
         name="billing_country"
         onChange={this.handleChange}
         placeholder="City"
-        value={this.props.city}
+        value={this.props.value}
       />
     </FormGroup>);
   }
@@ -28,7 +28,8 @@ class City extends Base {
 
 City.defaultProps = {
   componentName: 'city',
-  city: '',
+  value: '',
+  country: 'US',
   ...City.defaultProps
 };
 
