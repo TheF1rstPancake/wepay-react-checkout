@@ -158,6 +158,7 @@ PaymentForm.defaultProps = {
   name: { first_name: '', last_name: '' },
   email: { email: '' },
   amount: {},
+  onTokenized: (card) => {console.log(card);},
   onError: (err) => {console.log(err);},
   ...PaymentForm.defaultProps
 };

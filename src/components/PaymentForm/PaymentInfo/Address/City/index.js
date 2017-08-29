@@ -1,6 +1,7 @@
 import React from 'react';
 import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import Base from '../../../../Base';
+import PropTypes from 'prop-types';
 
 class City extends Base {
   constructor(props) {
@@ -25,6 +26,11 @@ class City extends Base {
     </FormGroup>);
   }
 }
+
+City.propTypes = {
+  value: PropTypes.string,
+  country: PropTypes.string
+};
 
 City.defaultProps = {
   componentName: 'city',

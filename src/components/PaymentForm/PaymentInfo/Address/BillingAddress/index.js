@@ -31,7 +31,6 @@ class BillingAddress extends Base {
 }
 
 BillingAddress.propTypes = {
-  country: PropTypes.string,
   value:PropTypes.string,
   ...BillingAddress.propTypes
 };
