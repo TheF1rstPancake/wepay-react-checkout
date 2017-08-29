@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "payment": "^2.2.1",
+    "payment": "^2.2.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-bootstrap": "^0.31.2",
@@ -13,8 +16,15 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "npm run compile",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
+    "eject": "react-scripts eject",
+    "compile": "NODE_ENV=production babel src --out-dir lib --copy-files"
+  },
+  "babel": {
+    "presets": [
+      "react-app"
+    ]
+  },
+  "main": "lib/index.js"
 }

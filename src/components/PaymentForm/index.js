@@ -88,7 +88,6 @@ class PaymentForm extends Base {
     const email = this.props.email ? this.props.email : {};
     const amount = this.props.amount ? this.props.amount: {};
 
-    console.log("AMOUNT IN FORM: ", amount);
     return (
       <div className="App">
         <Grid>

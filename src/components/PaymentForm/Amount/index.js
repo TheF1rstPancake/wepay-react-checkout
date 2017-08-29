@@ -44,6 +44,7 @@ class Amount extends Base {
             value={this.props.value}
             onChange={this.handleChange}
             required="true"
+            disabled={!this.props.editable}
           />
         </InputGroup>
       </FormGroup>
@@ -60,6 +61,7 @@ Amount.CURRENCIES = {
 Amount.propTypes = {
   currency: PropTypes.string.isRequired,
   value: PropTypes.string,
+  editable: PropTypes.bool,
   ...Amount.propTypes
 };
 
@@ -67,6 +69,7 @@ Amount.defaultProps = {
   currency: 'USD',
   value: '',
   componentName: 'amount',
+  editable: false,
   ...Amount.defaultProps
 };
 
