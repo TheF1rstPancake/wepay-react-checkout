@@ -1,11 +1,12 @@
 import React from 'react';
-import Name from '../Name';
-import Email from '../Email';
 import Base from '../Base';
-import PaymentInfo from '../PaymentInfo';
+
+import Name from './Name';
+import Email from './Email';
+import PaymentInfo from './PaymentInfo';
+import Amount from './Amount';
 import { Grid, FormGroup, Col, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-
 
 class PaymentForm extends Base {
   constructor(props) {
@@ -55,7 +56,7 @@ class PaymentForm extends Base {
     // we need to tokenize the card info
     // and then pass the checkout payload to our backend.
     this.tokenizeCard(payload).then(response => {
-      this.props.onSuccess(response);
+      this.props.onTokenized(response);
     }).catch(err => {
       this.props.onError(err);
     });
@@ -85,7 +86,9 @@ class PaymentForm extends Base {
     const payment_info = this.props.payment_info ? this.props.payment_info : {};
     const name = this.props.name ? this.props.name : {};
     const email = this.props.email ? this.props.email : {};
+    const amount = this.props.amount ? this.props.amount: {};
 
+    console.log("AMOUNT IN FORM: ", amount);
     return (
       <div className="App">
         <Grid>
@@ -114,6 +117,14 @@ class PaymentForm extends Base {
             </FormGroup>
             <FormGroup>
               <Col lg={12}>
+                <Amount
+                  onChange={this.handleChange}
+                  {...amount}
+                />
+              </Col>
+            </FormGroup>
+            <FormGroup>
+              <Col lg={12}>
                 <Button
                   type="submit"
                   bsStyle="success"
@@ -134,9 +145,10 @@ PaymentForm.propTypes = {
   production: PropTypes.bool,
   name: PropTypes.object,
   email: PropTypes.object,
-  onSuccess: PropTypes.func,
+  onTokenized: PropTypes.func,
   onError: PropTypes.func,
   payment_info: PropTypes.object,
+  amount:PropTypes.object,
   ...PaymentForm.propTypes
 };
 
@@ -146,9 +158,14 @@ PaymentForm.defaultProps = {
   payment_info: {},
   name: { first_name: '', last_name: '' },
   email: { email: '' },
-
+  amount: {},
   onError: (err) => {console.log(err);},
   ...PaymentForm.defaultProps
 };
+
+PaymentForm.Amount = Amount;
+PaymentForm.PaymentInfo = PaymentInfo;
+PaymentForm.Name = Name;
+PaymentForm.Email = Email;
 
 export default PaymentForm;

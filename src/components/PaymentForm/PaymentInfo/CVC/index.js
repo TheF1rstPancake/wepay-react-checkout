@@ -2,10 +2,10 @@ import React from 'react';
 import Payment from 'payment';
 import { FormGroup, InputGroup, FormControl, Glyphicon } from 'react-bootstrap';
 import ReactDOM from 'react-dom';
-import Base from '../../Base';
+import Base from '../../..//Base';
 import PropTypes from 'prop-types';
 
-class Expiration extends Base {
+class CVC extends Base {
   constructor(props) {
     super(props);
 
@@ -14,7 +14,7 @@ class Expiration extends Base {
   }
 
   componentDidMount() {
-    Payment.formatCardExpiry(ReactDOM.findDOMNode(this.refs.expirdate));
+    Payment.formatCardCVC(ReactDOM.findDOMNode(this.refs.cardcvc));
   }
 
   handleChange(e) {
@@ -22,25 +22,21 @@ class Expiration extends Base {
   }
 
   validate() {
-    if (this.props.value === '' || !this.props.value) {
-      return null;
-    }
-
-    return Payment.fns.validateCardExpiry(this.props.value) ? 'success' : 'error';
+    return this.props.value === '' || !this.props.value ? null :  Payment.fns.validateCardCVC(this.props.value) ? 'success' : 'error';
   }
 
   render(){
     return (<FormGroup validationState={this.validate()}>
       <InputGroup>
         <InputGroup.Addon>
-          <Glyphicon glyph="calendar" />
+          <Glyphicon glyph="compressed" />
         </InputGroup.Addon>
         <FormControl
-          id="expirdate"
-          ref="expirdate"
-          name="expirdate"
+          id="cardcvc"
+          ref="cardcvc"
+          name="cardcvc"
           type="tel"
-          placeholder="MM / YY"
+          placeholder="***"
           value={this.props.value}
           onChange={this.handleChange}
         />
@@ -49,15 +45,13 @@ class Expiration extends Base {
   }
 }
 
-Expiration.propTypes = {
-  value: PropTypes.string,
-  ...Expiration.propTypes
-};
+CVC.propTypes.value = PropTypes.string;
 
-Expiration.defaultProps = {
-  componentName: 'expiration',
+CVC.defaultProps = {
+  componentName: 'cvc',
   value: '',
-  ...Expiration.defaultProps
+  ...CVC.defaultProps
 };
 
-export default Expiration;
+
+export default CVC;

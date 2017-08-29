@@ -5,7 +5,7 @@ import PostalCode from './PostalCode';
 import BillingAddress from './BillingAddress';
 import City from './City';
 import State from './State';
-import Base from '../../Base';
+import Base from '../../../Base';
 import PropTypes from 'prop-types';
 
 class Address extends Base {

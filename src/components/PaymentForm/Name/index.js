@@ -3,7 +3,7 @@
 import React from 'react';
 import { FormGroup, Col, FormControl, InputGroup, Glyphicon } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import Base from '../Base';
+import Base from '../../Base';
 
 class Name extends Base {
   constructor(props) {
@@ -34,7 +34,8 @@ class Name extends Base {
             type="text"
             value={this.props.first_name}
             onChange={this.handleFirstNameChange}
-            placeholder="First Name" />
+            placeholder="First Name"
+            required="true" />
         </InputGroup>
       </Col>
       <Col
@@ -46,7 +47,8 @@ class Name extends Base {
           type="text"
           value={this.props.last_name}
           onChange={this.handleLastNameChange}
-          placeholder="Last Name" />
+          placeholder="Last Name"
+          required="true" />
       </Col>
     </FormGroup>);
   }

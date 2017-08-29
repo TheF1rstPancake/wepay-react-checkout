@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
-import Base from '../../../Base';
+import Base from '../../../../Base';
 import PropTypes from 'prop-types';
 
 class BillingAddress extends Base {

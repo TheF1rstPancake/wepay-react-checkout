@@ -1,9 +1,3 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+export { PaymentForm, Base } from './components';
 
-/*eslint-disable react/self-closing-comp*/
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+// add contrib exports here

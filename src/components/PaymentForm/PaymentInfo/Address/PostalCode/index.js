@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import Base from '../../../Base';
+import Base from '../../../../Base';
 
 class PostalCode extends Base {
   constructor(props) {

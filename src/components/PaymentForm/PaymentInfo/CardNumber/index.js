@@ -2,7 +2,7 @@ import React from 'react';
 import { FormGroup, InputGroup, FormControl, Glyphicon } from 'react-bootstrap';
 import Payment from 'payment';
 import ReactDOM from 'react-dom';
-import Base from '../../Base';
+import Base from '../../../Base';
 import PropTypes from 'prop-types';
 class CardNumber extends Base {
   constructor(props) {

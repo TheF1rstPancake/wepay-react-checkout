@@ -4,7 +4,7 @@ import CardNumber from './CardNumber';
 import Expiration from './Expiration';
 import CVC from './CVC';
 import Address from './Address';
-import Base from '../Base';
+import Base from '../../Base';
 import PropTypes from 'prop-types';
 class PaymentInfo extends Base {
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormGroup, FormControl, InputGroup, Glyphicon } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import Base from '../Base';
+import Base from '../../Base';
 
 class Email extends Base {
   constructor(props) {
@@ -18,7 +18,7 @@ class Email extends Base {
   }
   validate() {
     var email = this.props.value;
-    var pattern = new RegExp( '.+@.+\.[^\s]+');
+    var pattern = /.+@.+\.[^\s]+/;
 
     return email === '' || !email ? null : pattern.test(email) ? 'success' : 'error';
 
@@ -38,6 +38,7 @@ class Email extends Base {
             placeholder="Email"
             value={this.props.value}
             onChange={this.handleChange}
+            required="true"
           />
         </InputGroup>
       </FormGroup>
