@@ -15,8 +15,10 @@ class PaymentForm extends Base {
     console.log("PAYMENT FORM PROPS: ", props);
 
     this.tokenizeCard = this.tokenizeCard.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.defaultHandleSubmit = this.defaultHandleSubmit.bind(this);
     this.handleError = this.handleError.bind(this);
+
+    this.handleSubmit = props.onSubmit !== undefined ? props.onSubmit.bind(this) : this.defaultHandleSubmit;
   }
   componentDidMount() {
     if (this.props.production) {
@@ -26,7 +28,7 @@ class PaymentForm extends Base {
     }
   }
 
-  handleSubmit(e) {
+  defaultHandleSubmit(e) {
     e.preventDefault();
     const payment_info = this.props.payment_info;
 
@@ -160,6 +162,7 @@ PaymentForm.defaultProps = {
   amount: {},
   onTokenized: (card) => {console.log(card);},
   onError: (err) => {console.log(err);},
+  onSubmit: undefined,
   ...PaymentForm.defaultProps
 };
 

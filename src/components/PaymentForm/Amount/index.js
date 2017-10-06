@@ -28,7 +28,6 @@ class Amount extends Base {
 
   render(){
     const currency_flag = Amount.CURRENCIES[this.props.currency];
-    console.log("CURRENCY: ", currency_flag, this.props.currency);
 
     return (
       <FormGroup validationState={this.validate()}>
