@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 
 class Address extends Base {
   render() {
+    console.log("ADDRESS PROPS: ",this.props);
     const country = this.props.country.value;
     return (
       <div>
@@ -60,7 +61,7 @@ class Address extends Base {
 }
 
 Address.propTypes = {
-  country: PropTypes.object,
+  country: PropTypes.object.isRequired,
   billing_address: PropTypes.object,
   postal_code: PropTypes.object,
   state: PropTypes.object,
@@ -69,7 +70,6 @@ Address.propTypes = {
 
 Address.defaultProps = {
   componentName: 'address',
-  country: { value: 'US' },
   billing_address: { value: '' },
   postal_code: { value: '' },
   state: { value: '' },

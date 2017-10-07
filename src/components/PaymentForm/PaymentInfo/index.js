@@ -61,7 +61,6 @@ PaymentInfo.defaultProps = {
   address: {
     billing_address: undefined,
     city: undefined,
-    country: undefined,
     postal_code: undefined,
     state:undefined
   },

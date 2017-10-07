@@ -14,7 +14,7 @@ class CVC extends Base {
   }
 
   componentDidMount() {
-    Payment.formatCardCVC(ReactDOM.findDOMNode(this.refs.cardcvc));
+    Payment.formatCardCVC(ReactDOM.findDOMNode(this.cardcvc));
   }
 
   handleChange(e) {
@@ -33,7 +33,7 @@ class CVC extends Base {
         </InputGroup.Addon>
         <FormControl
           id="cardcvc"
-          ref="cardcvc"
+          inputRef={(input)=>{this.cardcvc=input;}}
           name="cardcvc"
           type="tel"
           placeholder="***"

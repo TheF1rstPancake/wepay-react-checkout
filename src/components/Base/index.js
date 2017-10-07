@@ -6,7 +6,7 @@ class Base extends Component {
     super(props);
 
     // these are the values we want to pass up
-    this.pass_up = {};
+    this.pass_up = JSON.parse(JSON.stringify(props));
     this.handleChange = this.handleChange.bind(this);
   }
   handleChange(name, value) {
@@ -15,6 +15,7 @@ class Base extends Component {
     this.pass_up[[name]] = value;
     var s = this.pass_up;
     //var s =  { [name]: value };
+    console.log("HANDLE CHANGE: ", name, s);
     this.props.onChange(this.props.componentName, s);
   }
 }

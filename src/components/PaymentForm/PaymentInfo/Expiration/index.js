@@ -14,7 +14,8 @@ class Expiration extends Base {
   }
 
   componentDidMount() {
-    Payment.formatCardExpiry(ReactDOM.findDOMNode(this.refs.expirdate));
+    console.log(this.expirdate);
+    Payment.formatCardExpiry(ReactDOM.findDOMNode(this.expirdate));
   }
 
   handleChange(e) {
@@ -37,7 +38,7 @@ class Expiration extends Base {
         </InputGroup.Addon>
         <FormControl
           id="expirdate"
-          ref="expirdate"
+          inputRef={(input)=>{this.expirdate = input;}}
           name="expirdate"
           type="tel"
           placeholder="MM / YY"

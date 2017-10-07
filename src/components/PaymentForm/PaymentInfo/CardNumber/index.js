@@ -7,14 +7,16 @@ import PropTypes from 'prop-types';
 class CardNumber extends Base {
   constructor(props) {
     super(props);
-
+    
     this.handleChange = this.handleChange.bind(this);
     this.validate = this.validate.bind(this);
+
+    this.refs = {};
   }
 
   componentDidMount() {
     // attach card number formatting
-    Payment.formatCardNumber(ReactDOM.findDOMNode(this.refs.cardnumber));
+    Payment.formatCardNumber(ReactDOM.findDOMNode(this.cardnumber));
   }
 
   handleChange(e) {
@@ -42,7 +44,7 @@ class CardNumber extends Base {
             id="cardnumber"
             name="cardnumber"
             type="tel"
-            ref="cardnumber"
+            inputRef={(input)=>{this.cardnumber=input;}}
             placeholder="**** **** **** ****"
             value={this.props.value}
             onChange={this.handleChange}

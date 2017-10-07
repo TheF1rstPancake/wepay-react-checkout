@@ -6,7 +6,8 @@ import Base from '../../Base';
 class Amount extends Base {
   constructor(props) {
     super(props);
-
+    
+    console.log("AMOUNT PROPS: ", props);
     this.handleChange = this.handleChange.bind(this);
   }
   handleChange(e) {
@@ -14,7 +15,7 @@ class Amount extends Base {
   }
   componentDidMount() {
     // raise our initial currency value
-    super.handleChange("currency", this.props.currency);
+    // super.handleChange("currency", this.props.currency);
   }
 
   validate() {
@@ -59,14 +60,14 @@ Amount.CURRENCIES = {
 
 Amount.propTypes = {
   currency: PropTypes.string.isRequired,
-  value: PropTypes.string,
+  value: PropTypes.string.isRequired,
   editable: PropTypes.bool,
   ...Amount.propTypes
 };
 
 Amount.defaultProps = {
   currency: 'USD',
-  value: '',
+  //value: '',
   componentName: 'amount',
   editable: false,
   ...Amount.defaultProps

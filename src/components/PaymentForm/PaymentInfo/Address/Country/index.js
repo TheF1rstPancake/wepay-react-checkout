@@ -12,7 +12,7 @@ class Country extends Base {
     super.handleChange('value', e.target.value);
   }
   componentDidMount(){
-    super.handleChange('value', this.props.value);
+    //super.handleChange('value', this.props.value);
   }
 
   render() {
@@ -280,13 +280,12 @@ class Country extends Base {
 }
 
 Country.propTypes ={
-  value: PropTypes.string,
+  value: PropTypes.string.isRequired,
   ...Country.propTypess
 };
 
 Country.defaultProps = {
   componentName: 'country',
-  value: 'US',
   ...Country.defaultProps
 };
 

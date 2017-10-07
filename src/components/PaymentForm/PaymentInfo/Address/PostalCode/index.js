@@ -66,13 +66,12 @@ class PostalCode extends Base {
 
 // extend existing propTypes
 PostalCode.propTypes = {
-  country: PropTypes.string,
+  country: PropTypes.string.isRequired,
   value: PropTypes.string,
   ...PostalCode.propTypes
 };
 
 PostalCode.defaultProps = {
-  country: 'US',
   value: '',
   componentName: 'postal_code',
   ...PostalCode.defaultProps
