@@ -7,8 +7,19 @@ class Amount extends Base {
   constructor(props) {
     super(props);
     
-    console.log("AMOUNT PROPS: ", props);
     this.handleChange = this.handleChange.bind(this);
+    
+    // these are properties that we set by default
+    // they can be overriden via the object's props
+    // these should be used for values that are CONSTANT
+    // for example, the ID of the input is likely not going to change
+    this.defaultValues = {
+      id: "amount",
+      name: "amount",
+      type: 'tel',
+      placeholder: 'Amount',
+      required: 'true',
+    };
   }
   handleChange(e) {
     super.handleChange("value", e.target.value);
@@ -23,13 +34,19 @@ class Amount extends Base {
     /* eslint-disable no-useless-escape*/
     var pattern = /^\d+(,\d{3})*\.?[0-9]?[0-9]?$/;
 
-    console.log(pattern.test(amount));
     return amount === '' || !amount ? null : pattern.test(amount) ? 'success' : 'error';
   }
 
   render(){
     const currency_flag = Amount.CURRENCIES[this.props.currency];
+    
+    // remove props that don't belong
+    var { onChange, currency, editable, componentName, ...props } = this.props;
 
+    var values = {
+      ...this.defaultValues,
+      ...props
+    };
     return (
       <FormGroup validationState={this.validate()}>
         <InputGroup>
@@ -37,14 +54,7 @@ class Amount extends Base {
             {currency_flag}
           </InputGroup.Addon>
           <FormControl
-            id="amount"
-            name="amount"
-            type="tel"
-            placeholder="Amount"
-            value={this.props.value}
-            onChange={this.handleChange}
-            required="true"
-            disabled={!this.props.editable}
+            {...values}
           />
         </InputGroup>
       </FormGroup>
@@ -53,9 +63,15 @@ class Amount extends Base {
 }
 
 Amount.CURRENCIES = {
-  GBP: '£',
-  USD: '$',
-  CAD: '$'
+  GBP: (<i
+    className="fa fa-gbp"
+    style={{ ariaHidden:"true" }} />),
+  USD: (<i
+    className="fa fa-usd"
+    style={{ ariaHidden:"true" }} />)  ,
+  CAD: (<i
+    className="fa fa-usd"
+    style={{ ariaHidden:"true" }} />)
 };
 
 Amount.propTypes = {

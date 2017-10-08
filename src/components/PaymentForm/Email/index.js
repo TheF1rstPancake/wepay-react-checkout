@@ -10,7 +10,14 @@ class Email extends Base {
     this.state = {};
     this.handleChange = this.handleChange.bind(this);
     this.validate = this.validate.bind(this);
-    // email regex
+
+    this.defaultValues = {
+      id:"email",
+      name:"email",
+      type:"email",
+      placeholder:"Email",
+      required:"true",
+    };
   }
   handleChange(e) {
     var text = e.target.value;
@@ -32,13 +39,9 @@ class Email extends Base {
             <Glyphicon glyph="envelope" />
           </InputGroup.Addon>
           <FormControl
-            id="email"
-            name="email"
-            type="email"
-            placeholder="Email"
+            {...this.defaultValues}
             value={this.props.value}
             onChange={this.handleChange}
-            required="true"
           />
         </InputGroup>
       </FormGroup>

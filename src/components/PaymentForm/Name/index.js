@@ -11,6 +11,23 @@ class Name extends Base {
 
     this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
     this.handleLastNameChange = this.handleLastNameChange.bind(this);
+
+    this.defaultValues = {
+      firstname: {
+        id:'firstname',
+        name:'firstname',
+        required:'true',
+        placeholder:'First Name',
+        type:'text'
+      },
+      lastname: {
+        id:'lastname',
+        name:'lastname',
+        required:'true',
+        placeholder:'Last Name',
+        type:'text'
+      }
+    };
   }
   handleFirstNameChange(e) {
     super.handleChange("first_name", e.target.value);
@@ -29,26 +46,20 @@ class Name extends Base {
             <Glyphicon glyph="user" />
           </InputGroup.Addon>
           <FormControl
-            id="firstname"
-            name="firstname"
-            type="text"
+            {... this.defaultValues.firstname}
             value={this.props.first_name}
             onChange={this.handleFirstNameChange}
-            placeholder="First Name"
-            required="true" />
+          />
         </InputGroup>
       </Col>
       <Col
         lg={6}
         xs={6}>
         <FormControl
-          id="lastname"
-          name="lastname"
-          type="text"
+          {... this.defaultValues.lastname}
           value={this.props.last_name}
           onChange={this.handleLastNameChange}
-          placeholder="Last Name"
-          required="true" />
+        />
       </Col>
     </FormGroup>);
   }
