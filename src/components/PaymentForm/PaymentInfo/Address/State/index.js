@@ -164,6 +164,4 @@ State.defaultProps = {
   ...State.defaultProps
 };
 
-console.log(this.defaultProps);
-
 export default State;
